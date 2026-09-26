@@ -1,5 +1,9 @@
 package com.ghazimuhammad.calculator;
 
+import com.ghazimuhammad.calculator.calculator.Calculator;
+import com.ghazimuhammad.calculator.calculator.HistoryCalculator;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -10,6 +14,7 @@ public class Main {
     public static final String ERROR_FORMAT = "Error format exception";
     public static final String ENTER_NUMBER_PROMPT = "Enter an example: ";
     public static final String RESULT = "Result: ";
+    public static final String HISTORY_CLEARED = "History cleared.....";
 
     public static void main(String[] args) {
         run();
@@ -19,29 +24,46 @@ public class Main {
         input = input.replaceAll("([*/+-])", " $1 ");
         String parts[] = input.trim().split("\\s+");
 
-        int num1 = Integer.parseInt(parts[0]);
-        int num2 = Integer.parseInt(parts[2]);
-        int answer = Calculator.performOperation(num1, num2, parts[1]);
-        System.out.println(RESULT + num1 + " " + parts[1] + " " + num2 + " = " + answer);
+        double num1 = Integer.parseInt(parts[0]);
+        double num2 = Integer.parseInt(parts[2]);
+        double answer = Calculator.performOperation(num1, num2, parts[1]);
+        String result  = num1 + " " + parts[1] + " " + num2 + " = " + answer;
+        HistoryCalculator.addHistory(result);
+        System.out.println(RESULT + result);
     }
-
     public static void run() {
         System.out.print(ENTER_NUMBER_PROMPT);
         while (true) {
-            String input = sc.nextLine();
+            String input = sc.nextLine().toLowerCase();
             if (input.equalsIgnoreCase("exit")) break;
-            try {
-                processInput(input);
-            } catch (IllegalStateException e) {
-                System.out.println(ERROR_FORMAT);
-            } catch (NumberFormatException e) {
-                System.out.println(ERROR_FORMAT);
-            } catch (ArithmeticException e) {
-                System.out.println(ERROR_ARITHMETIC);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println(ERROR_FORMAT);
+            switch (input){
+                case "last":
+                    HistoryCalculator.lastExample();
+                    System.out.print(ENTER_NUMBER_PROMPT);
+                    break;
+                case "clear":
+                    HistoryCalculator.clearHistory();
+                    System.out.println(HISTORY_CLEARED);
+                    System.out.print(ENTER_NUMBER_PROMPT);
+                    break;
+                case "history":
+                    HistoryCalculator.showHustory();
+                    System.out.print(ENTER_NUMBER_PROMPT);
+                    break;
+                default:
+                try {
+                    processInput(input);
+                } catch (IllegalStateException e) {
+                    System.out.println(ERROR_FORMAT);
+                } catch (NumberFormatException e) {
+                    System.out.println(ERROR_FORMAT);
+                } catch (ArithmeticException e) {
+                    System.out.println(ERROR_ARITHMETIC);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    System.out.println(ERROR_FORMAT);
+                }
+                System.out.print(ENTER_NUMBER_PROMPT);
             }
-            System.out.print(ENTER_NUMBER_PROMPT);
         }
     }
 }

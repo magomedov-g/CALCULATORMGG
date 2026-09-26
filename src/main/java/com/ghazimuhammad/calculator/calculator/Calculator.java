@@ -1,8 +1,8 @@
-package com.ghazimuhammad.calculator;
+package com.ghazimuhammad.calculator.calculator;
 
 public class Calculator {
 
-    public static int performOperation(int a, int b, String symbol) {
+    public static double performOperation(double a, double b, String symbol) {
         switch (symbol) {
             case "*":
                 return (a * b);
