@@ -16,7 +16,7 @@ public class HistoryCalculator {
         }
     }
 
-    public static void showHustory() {
+    public static void showHistory() {
         if (operation.isEmpty()) {
             System.out.println("History cleared");
         } else {
@@ -32,5 +32,25 @@ public class HistoryCalculator {
 
     public static void lastExample() {
         System.out.println(operation.get(operation.size() - 1));
+    }
+
+    public static String help() {
+        return   """
+                 Доступные команды:
+                
+                <число> <оператор> <число>
+                
+                        Операторы:
+                        +  сложение
+                        -  вычитание
+                        *  умножение
+                        /  деление
+                
+                Дополнительные команды:
+                history  — показать историю
+                last     — повторить последнюю операцию
+                clear    — очистить историю
+                exit     — выход
+                """;
     }
 }

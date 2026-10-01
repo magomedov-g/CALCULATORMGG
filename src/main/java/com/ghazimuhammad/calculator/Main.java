@@ -39,16 +39,16 @@ public class Main {
             switch (input){
                 case "last":
                     HistoryCalculator.lastExample();
-                    System.out.print(ENTER_NUMBER_PROMPT);
                     break;
                 case "clear":
                     HistoryCalculator.clearHistory();
                     System.out.println(HISTORY_CLEARED);
-                    System.out.print(ENTER_NUMBER_PROMPT);
                     break;
                 case "history":
-                    HistoryCalculator.showHustory();
-                    System.out.print(ENTER_NUMBER_PROMPT);
+                    HistoryCalculator.showHistory();
+                    break;
+                case "help":
+                    System.out.print(HistoryCalculator.help());
                     break;
                 default:
                 try {
@@ -62,8 +62,7 @@ public class Main {
                 } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.println(ERROR_FORMAT);
                 }
-                System.out.print(ENTER_NUMBER_PROMPT);
-            }
+            }System.out.print(ENTER_NUMBER_PROMPT);
         }
     }
 }
