@@ -1,9 +1,9 @@
 package com.ghazimuhammad.calculator;
 
-import com.ghazimuhammad.calculator.calculator.Calculator;
-import com.ghazimuhammad.calculator.calculator.HistoryCalculator;
+import com.ghazimuhammad.calculator.calculator.*;
 
-import java.util.ArrayList;
+import com.ghazimuhammad.calculator.history.HistoryCalculator;
+
 import java.util.Scanner;
 
 public class Main {
@@ -26,7 +26,7 @@ public class Main {
 
         double num1 = Integer.parseInt(parts[0]);
         double num2 = Integer.parseInt(parts[2]);
-        double answer = Calculator.performOperation(num1, num2, parts[1]);
+        double answer = Calculator.operationHashMapCalculator(num1, num2, parts[1]);
         String result  = num1 + " " + parts[1] + " " + num2 + " = " + answer;
         HistoryCalculator.addHistory(result);
         System.out.println(RESULT + result);

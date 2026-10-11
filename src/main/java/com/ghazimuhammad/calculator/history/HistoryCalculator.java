@@ -1,6 +1,4 @@
-package com.ghazimuhammad.calculator.calculator;
-
-import com.ghazimuhammad.calculator.Main;
+package com.ghazimuhammad.calculator.history;
 
 import java.util.ArrayList;
 
