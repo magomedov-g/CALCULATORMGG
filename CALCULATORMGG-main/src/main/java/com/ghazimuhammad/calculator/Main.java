@@ -57,6 +57,8 @@ public class Main {
                     System.out.println(ERROR_FORMAT);
                 } catch (NumberFormatException e) {
                     System.out.println(ERROR_FORMAT);
+                } catch (IllegalArgumentException e) {
+                    System.out.println(ERROR_FORMAT);
                 } catch (ArithmeticException e) {
                     System.out.println(ERROR_ARITHMETIC);
                 } catch (ArrayIndexOutOfBoundsException e) {

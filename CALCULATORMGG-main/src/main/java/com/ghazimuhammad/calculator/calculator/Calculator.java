@@ -33,6 +33,9 @@ public class Calculator {
 
         Operation op = operationHashMap.get(symbol);
 
+        if (op == null) {
+            throw new  IllegalArgumentException();
+        }
         double result = op.execute(a, b);
         return result;
     }
