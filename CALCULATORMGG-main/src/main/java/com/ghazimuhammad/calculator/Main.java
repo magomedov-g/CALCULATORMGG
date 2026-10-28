@@ -15,6 +15,7 @@ public class Main {
     public static final String ENTER_NUMBER_PROMPT = "Enter an example: ";
     public static final String RESULT = "Result: ";
     public static final String HISTORY_CLEARED = "History cleared.....";
+    public static final String HISTORY_ISEMPTY = "History is empty";
 
     public static void main(String[] args) {
         run();
@@ -63,6 +64,8 @@ public class Main {
                     System.out.println(ERROR_ARITHMETIC);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.println(ERROR_FORMAT);
+                }
+                catch (IndexOutOfBoundsException e) {
                 }
             }System.out.print(ENTER_NUMBER_PROMPT);
         }

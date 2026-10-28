@@ -1,5 +1,7 @@
 package com.ghazimuhammad.calculator.history;
 
+import com.ghazimuhammad.calculator.Main;
+
 import java.util.ArrayList;
 
 public class HistoryCalculator {
@@ -16,7 +18,7 @@ public class HistoryCalculator {
 
     public static void showHistory() {
         if (operation.isEmpty()) {
-            System.out.println("History cleared");
+            System.out.println(Main.HISTORY_ISEMPTY);
         } else {
             for (String resultHistory : operation) {
                 System.out.println(resultHistory);
@@ -29,6 +31,11 @@ public class HistoryCalculator {
     }
 
     public static void lastExample() {
+
+        if (operation.isEmpty()) {
+            System.out.println(Main.HISTORY_ISEMPTY);
+            return;
+        }
         System.out.println(operation.get(operation.size() - 1));
     }
 
