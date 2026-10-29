@@ -29,7 +29,7 @@ public class Main {
         double num2 = Double.parseDouble(parts[2]);
         double answer = Calculator.operationHashMapCalculator(num1, num2, parts[1]);
         String result  = num1 + " " + parts[1] + " " + num2 + " = " + answer;
-        HistoryCalculator.addHistory(result);
+        HistoryCalculator.addHistory(result, parts[1], num1, num2);
         System.out.println(RESULT + result);
     }
     public static void run() {

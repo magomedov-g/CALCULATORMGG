@@ -1,4 +1,3 @@
-
 package com.ghazimuhammad.calculator;
 
 import com.ghazimuhammad.calculator.calculator.Calculator;
@@ -6,36 +5,53 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalculatorTest {
+public class CalculatorTest {
 
     @Test
-    void shouldAddTwoPositiveNumbers() {
-        assertEquals(91.0,
-                Calculator.operationHashMapCalculator(89, 2, "+"));
+    void testAddition() {
+        assertEquals(8.0,
+                Calculator.operationHashMapCalculator(5, 3, "+"));
     }
 
     @Test
-    void shouldSubtractNumbers() {
-        assertEquals(7.0,
-                Calculator.operationHashMapCalculator(10, 3, "-"));
+    void testSubtraction() {
+        assertEquals(2.0,
+                Calculator.operationHashMapCalculator(5, 3, "-"));
     }
 
     @Test
-    void shouldMultiplyNumbers() {
-        assertEquals(212.0,
-                Calculator.operationHashMapCalculator(106, 2, "*"));
+    void testMultiplication() {
+        assertEquals(15.0,
+                Calculator.operationHashMapCalculator(5, 3, "*"));
     }
 
     @Test
-    void shouldDivideNumbers() {
-        assertEquals(20.0,
-                Calculator.operationHashMapCalculator(100, 5, "/"));
-
+    void testDivision() {
+        assertEquals(2.5,
+                Calculator.operationHashMapCalculator(5, 2, "/"));
     }
 
     @Test
-    void shouldThrowExceptionForUnknownOperator() {
-        assertThrows(NullPointerException.class,
-                () -> Calculator.operationHashMapCalculator(5, 2, "%"));
+    void testNegativeNumbers() {
+        assertEquals(-2.0,
+                Calculator.operationHashMapCalculator(-5, 3, "+"));
+    }
+
+    @Test
+    void testDoubleNumbers() {
+        assertEquals(6.5,
+                Calculator.operationHashMapCalculator(5.5, 1, "+"));
+    }
+
+    @Test
+    void testDivisionByZero() {
+        assertThrows(ArithmeticException.class,
+                () -> Calculator.operationHashMapCalculator(5, 0, "/"));
+    }
+
+    @Test
+    void testUnknownOperator() {
+        assertThrows(IllegalArgumentException.class,
+                () -> Calculator.operationHashMapCalculator(5, 3, "%"));
     }
 }
