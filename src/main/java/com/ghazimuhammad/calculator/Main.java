@@ -25,6 +25,10 @@ public class Main {
         input = input.replaceAll("((?<=\\d)(\\s*)[*/+-])", " $1 ");
         String parts[] = input.trim().split("\\s+");
 
+        if (parts.length != 3) {
+            throw new IllegalArgumentException();
+        }
+
         double num1 = Double.parseDouble(parts[0]);
         double num2 = Double.parseDouble(parts[2]);
         double answer = Calculator.operationHashMapCalculator(num1, num2, parts[1]);
