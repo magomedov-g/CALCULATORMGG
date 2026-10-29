@@ -22,11 +22,11 @@ public class Main {
     }
 
     public static void processInput(String input) {
-        input = input.replaceAll("([*/+-])", " $1 ");
+        input = input.replaceAll("((?<=\\d)(\\s*)[*/+-])", " $1 ");
         String parts[] = input.trim().split("\\s+");
 
-        double num1 = Integer.parseInt(parts[0]);
-        double num2 = Integer.parseInt(parts[2]);
+        double num1 = Double.parseDouble(parts[0]);
+        double num2 = Double.parseDouble(parts[2]);
         double answer = Calculator.operationHashMapCalculator(num1, num2, parts[1]);
         String result  = num1 + " " + parts[1] + " " + num2 + " = " + answer;
         HistoryCalculator.addHistory(result);
