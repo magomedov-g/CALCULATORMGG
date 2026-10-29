@@ -15,20 +15,21 @@ public class Main {
     public static final String ENTER_NUMBER_PROMPT = "Enter an example: ";
     public static final String RESULT = "Result: ";
     public static final String HISTORY_CLEARED = "History cleared.....";
+    public static final String HISTORY_ISEMPTY = "History is empty";
 
     public static void main(String[] args) {
         run();
     }
 
     public static void processInput(String input) {
-        input = input.replaceAll("([*/+-])", " $1 ");
+        input = input.replaceAll("((?<=\\d)(\\s*)[*/+-])", " $1 ");
         String parts[] = input.trim().split("\\s+");
 
-        double num1 = Integer.parseInt(parts[0]);
-        double num2 = Integer.parseInt(parts[2]);
+        double num1 = Double.parseDouble(parts[0]);
+        double num2 = Double.parseDouble(parts[2]);
         double answer = Calculator.operationHashMapCalculator(num1, num2, parts[1]);
         String result  = num1 + " " + parts[1] + " " + num2 + " = " + answer;
-        HistoryCalculator.addHistory(result);
+        HistoryCalculator.addHistory(result, parts[1], num1, num2);
         System.out.println(RESULT + result);
     }
     public static void run() {
@@ -57,10 +58,14 @@ public class Main {
                     System.out.println(ERROR_FORMAT);
                 } catch (NumberFormatException e) {
                     System.out.println(ERROR_FORMAT);
+                } catch (IllegalArgumentException e) {
+                    System.out.println(ERROR_FORMAT);
                 } catch (ArithmeticException e) {
                     System.out.println(ERROR_ARITHMETIC);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.println(ERROR_FORMAT);
+                }
+                catch (IndexOutOfBoundsException e) {
                 }
             }System.out.print(ENTER_NUMBER_PROMPT);
         }
